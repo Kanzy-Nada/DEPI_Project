@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { useAuth } from '../../context/AuthContext';
-import Card from '../../components/UI/Card';
-import Button from '../../components/UI/Button';
-import WorkoutForm from '../../components/Workouts/WorkoutForm';
+import Card from '../../general components/UI/Card';
+import Button from '../../general components/UI/Button';
+import WorkoutForm from '../../general components/Workouts/WorkoutForm';
 import { FaPlus, FaEdit, FaTrash, FaDumbbell, FaRunning, FaSwimmer, FaWalking, FaBicycle } from 'react-icons/fa';
 import styles from './WorkoutsPage.module.css';
 
@@ -42,7 +41,7 @@ const workoutIcons = {
 };
 
 const WorkoutsPage = () => {
-  const { currentUser } = useAuth();
+  let currentUser ;
   const [workouts, setWorkouts] = useState([]);
   const [showForm, setShowForm] = useState(false);
   const [editingWorkout, setEditingWorkout] = useState(null);

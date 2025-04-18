@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
-import { useAuth } from '../../context/AuthContext';
-import Card from '../../components/UI/Card';
-import Tabs from '../../components/UI/Tabs';
-import Button from '../../components/UI/Button';
-import Modal from '../../components/UI/Modal';
-import WorkoutForm from '../../components/Workouts/WorkoutForm';
-import { mockDashboardStats, mockChartData, mockWorkouts } from '../../data/mockData';
+import Card from '../../general components/UI/Card';
+import Tabs from '../../general components/UI/Tabs';
+import Button from '../../general components/UI/Button';
+import Modal from '../../general components/UI/Modal';
+import WorkoutForm from '../../general components/Workouts/WorkoutForm';
 import styles from './DashboardPage.module.css';
 import { 
   FaWalking, 
@@ -48,9 +46,9 @@ ChartJS.register(
 );
 
 const DashboardPage = () => {
-  const { currentUser } = useAuth();
+  let currentUser;
   const [isWorkoutModalOpen, setIsWorkoutModalOpen] = useState(false);
-  const [userWorkouts, setUserWorkouts] = useState(mockWorkouts);
+  const [userWorkouts, setUserWorkouts] = useState(null);
   const [activeTab, setActiveTab] = useState(0);
   
   // chart options
@@ -63,59 +61,7 @@ const DashboardPage = () => {
       },
     },
   };
-  
-  // weekly steps chart data
-  const stepsChartData = {
-    labels: mockChartData.weeklySteps.labels,
-    datasets: [
-      {
-        label: 'Steps',
-        data: mockChartData.weeklySteps.data,
-        backgroundColor: 'rgba(0, 198, 173, 0.7)',
-        borderColor: 'rgb(0, 198, 173)',
-        borderWidth: 1,
-      },
-    ],
-  };
-  
-  // weekly calories chart data
-  const caloriesChartData = {
-    labels: mockChartData.calorieBalance.labels,
-    datasets: [
-      {
-        label: 'Calories Consumed',
-        data: mockChartData.calorieBalance.consumed,
-        backgroundColor: 'rgba(255, 175, 122, 0.7)',
-        borderColor: 'rgb(255, 175, 122)',
-        borderWidth: 1,
-      },
-      {
-        label: 'Calories Burned',
-        data: mockChartData.calorieBalance.burned,
-        backgroundColor: 'rgba(255, 122, 159, 0.7)',
-        borderColor: 'rgb(255, 122, 159)',
-        borderWidth: 1,
-      },
-    ],
-  };
-  
-  // weekly activity chart data
-  const activityChartData = {
-    labels: mockChartData.weeklyWorkouts.labels,
-    datasets: [
-      {
-        label: 'Activity Minutes',
-        data: mockChartData.weeklyWorkouts.data,
-        backgroundColor: 'rgba(136, 111, 234, 0.7)',
-        borderColor: 'rgb(136, 111, 234)',
-        borderWidth: 1,
-      },
-    ],
-  };
-  
-  // find user's stats or fall back to mock
-  const userStats = mockDashboardStats.find(user => user.userId === currentUser?.id) || mockDashboardStats[0];
-  
+ 
   // handle workout form submission
   const handleWorkoutSubmit = (workoutData) => {
     const newWorkout = {

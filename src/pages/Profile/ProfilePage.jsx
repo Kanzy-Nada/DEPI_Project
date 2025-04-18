@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { useAuth } from '../../context/AuthContext';
-import Card from '../../components/UI/Card';
-import Button from '../../components/UI/Button';
-import Input from '../../components/UI/Input';
-import Tabs from '../../components/UI/Tabs';
+import Card from '../../general components/UI/Card';
+import Button from '../../general components/UI/Button';
+import Input from '../../general components/UI/Input';
+import Tabs from '../../general components/UI/Tabs';
 import styles from './ProfilePage.module.css';
 import { 
   FaUser, 
@@ -24,7 +23,7 @@ import {
 } from 'react-icons/fa';
 
 const ProfilePage = () => {
-  const { currentUser, updateUserProfile } = useAuth();
+  const { currentUser, updateUserProfile } = null;
   const [isEditing, setIsEditing] = useState(false);
   const [formData, setFormData] = useState({
     name: '',

@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-import { useAuth } from '../../context/AuthContext';
-import Input from '../../components/UI/Input';
-import Button from '../../components/UI/Button';
+import Input from '../../general components/UI/Input';
+import Button from '../../general components/UI/Button';
 import styles from './LoginPage.module.css';
 
 const LoginPage = () => {
@@ -13,7 +12,7 @@ const LoginPage = () => {
   const [errors, setErrors] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   
-  const { login } = useAuth();
+  const { login } = null;
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || '/app/dashboard';

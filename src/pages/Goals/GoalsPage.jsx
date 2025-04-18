@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
-import { useAuth } from '../../context/AuthContext';
-import Card from '../../components/UI/Card';
-import Button from '../../components/UI/Button';
-import Modal from '../../components/UI/Modal';
-import GoalForm from '../../components/Goals/GoalForm';
-import { mockGoals } from '../../data/mockData';
+import Card from '../../general components/UI/Card';
+import Button from '../../general components/UI/Button';
+import Modal from '../../general components/UI/Modal';
+import GoalForm from '../../general components/Goals/GoalForm';
 import styles from './GoalsPage.module.css';
 import { 
   FaBullseye, 
@@ -19,13 +17,9 @@ import {
 } from 'react-icons/fa';
 
 const GoalsPage = () => {
-  const { currentUser } = useAuth();
   const [userGoals, setUserGoals] = useState(
     // Add goalType if missing from mockGoals data
-    mockGoals.map(goal => ({
-      ...goal,
-      goalType: goal.goalType || 'weight'
-    }))
+   
   );
   const [isGoalModalOpen, setIsGoalModalOpen] = useState(false);
   

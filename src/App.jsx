@@ -1,6 +1,5 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import { AuthProvider } from './context/AuthContext';
 import LandingPage from './pages/Landing/LandingPage';
 import LoginPage from './pages/Login/LoginPage';
 import SignupPage from './pages/Signup/SignupPage';
@@ -9,12 +8,11 @@ import ProfilePage from './pages/Profile/ProfilePage';
 import GoalsPage from './pages/Goals/GoalsPage';
 import WorkoutsPage from './pages/Workouts/WorkoutsPage';
 import ProgressPage from './pages/Progress/ProgressPage';
-import AppLayout from './components/Layout/AppLayout';
+import AppLayout from './general components/Layout/AppLayout';
 import './styles/globals.css';
 
 function App() {
   return (
-    <AuthProvider>
       <Router>
         <Routes>
           {/* Public Routes */}
@@ -36,7 +34,6 @@ function App() {
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </Router>
-    </AuthProvider>
   );
 }
 

@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import { Outlet, useLocation, Navigate } from 'react-router-dom';
-import { useAuth } from '../../context/AuthContext';
 import Sidebar from './Sidebar';
 import styles from './AppLayout.module.css';
 import { FaBars, FaTimes } from 'react-icons/fa';
 
 const AppLayout = () => {
-  const { currentUser } = useAuth();
+  let  currentUser;
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const location = useLocation();
   

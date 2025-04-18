@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { useAuth } from '../../context/AuthContext';
-import Card from '../../components/UI/Card';
-import Button from '../../components/UI/Button';
+import Card from '../../general components/UI/Card';
+import Button from '../../general components/UI/Button';
 import { Line } from 'react-chartjs-2';
 import {
   Chart as ChartJS,
@@ -86,7 +85,7 @@ const tabConfig = [
 ];
 
 const ProgressPage = () => {
-  const { currentUser } = useAuth();
+  let currentUser;
   const [activeTab, setActiveTab] = useState('weight');
   const [progressData, setProgressData] = useState({});
   const [chartData, setChartData] = useState(null);
